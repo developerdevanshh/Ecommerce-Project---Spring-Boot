@@ -45,7 +45,7 @@ public class CategoryController {
         }
     }
 
-    @PostMapping("/api/admin/category/{categoryId}")
+    @PutMapping("/api/admin/category/{categoryId}")
     public ResponseEntity<String> updateCategory(@RequestBody Category category,@PathVariable Long categoryId){
         try{
             Category savedCategory = categoryService.updateCategory(category, categoryId);
