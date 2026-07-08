@@ -26,11 +26,11 @@ public class CategoryServiceImpl implements CategoryService{
         Category category = categories.stream()
                 .filter(c -> c.getCategoryId().equals(categoryId))
                 .findFirst().get();
+
+        if(category == null){
+            return "Category Not Found";
+        }
         categories.remove(category);
         return "Category with categoryId: " + categoryId +" deleted successfully";
-
-
     }
-
-
 }
