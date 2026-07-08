@@ -16,9 +16,6 @@ public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
-//    public CategoryController(CategoryService categoryService) {
-//        this.categoryService = categoryService;
-//    }
 
     @GetMapping("/api/public/categories")
     public ResponseEntity<List<Category>> getAllCategories(){
@@ -29,7 +26,6 @@ public class CategoryController {
     @PostMapping("/api/public/categories")
     public ResponseEntity<String> createCategory(@RequestBody Category category){
         categoryService.createCategory(category);
-//        return "Category created successfully";
         return new ResponseEntity<>("Category created successfully",HttpStatus.CREATED);
     }
 
@@ -53,7 +49,6 @@ public class CategoryController {
         }catch (ResponseStatusException e){
             return new ResponseEntity<>(e.getReason(),e.getStatusCode());
         }
-//        return  new ResponseEntity<>("Category updated successfully",HttpStatus.OK);
     }
 
 }
