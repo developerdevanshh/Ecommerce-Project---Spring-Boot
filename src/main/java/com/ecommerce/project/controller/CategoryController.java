@@ -17,19 +17,22 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @GetMapping("/api/public/categories")
+//    @GetMapping("/api/public/categories")
+    @RequestMapping(value = "/api/public/categories" ,method = RequestMethod.GET)
     public ResponseEntity<List<Category>> getAllCategories(){
         List<Category> allCategories = categoryService.getAllCategories();
         return new ResponseEntity<>(allCategories,HttpStatus.OK);
     }
 
-    @PostMapping("/api/public/categories")
+//    @PostMapping("/api/public/categories")
+    @RequestMapping(value = "/api/public/categories" ,method = RequestMethod.POST)
     public ResponseEntity<String> createCategory(@RequestBody Category category){
         categoryService.createCategory(category);
         return new ResponseEntity<>("Category created successfully",HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/api/admin/category/{categoryId}")
+//    @DeleteMapping("/api/admin/category/{categoryId}")
+    @RequestMapping(value = "/api/admin/category/{categoryId}" ,method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteCategory(@PathVariable Long categoryId){
         try{
             String status = categoryService.deleteCategory(categoryId);
@@ -41,7 +44,8 @@ public class CategoryController {
         }
     }
 
-    @PutMapping("/api/admin/category/{categoryId}")
+//    @PutMapping("/api/admin/category/{categoryId}")
+    @RequestMapping(value = "/api/admin/category/{categoryId}" ,method = RequestMethod.PUT)
     public ResponseEntity<String> updateCategory(@RequestBody Category category,@PathVariable Long categoryId){
         try{
             Category savedCategory = categoryService.updateCategory(category, categoryId);
