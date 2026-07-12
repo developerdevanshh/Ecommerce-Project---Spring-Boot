@@ -54,9 +54,12 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Override
     public Category updateCategory(Category category, Long categoryId) {
-        Optional<Category> savedCategoryOptional = categoryRepository.findById(categoryId);
+//        Optional<Category> savedCategoryOptional = categoryRepository.findById(categoryId);
+//
+//        Category savedCategory = savedCategoryOptional
+//                .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
-        Category savedCategory = savedCategoryOptional
+        Category savedCategory = categoryRepository.findById(categoryId)
                 .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         category.setCategoryId(categoryId);
