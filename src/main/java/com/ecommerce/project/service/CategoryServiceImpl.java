@@ -30,7 +30,7 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Override
     public void createCategory(Category category) {
-        category.setCategoryId(nextId++);
+//        category.setCategoryId(nextId++);
 //        categories.add(category);
         categoryRepository.save(category);
     }
@@ -62,7 +62,7 @@ public class CategoryServiceImpl implements CategoryService{
             Category existingCategory = optionalCategory.get();
             existingCategory.setCategoryName(category.getCategoryName());
             Category savedCategory = categoryRepository.save(existingCategory);
-            return savedCategory;
+            return savedCategory ;
         }else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Category Not Found");
         }
